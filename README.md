@@ -11,3 +11,6 @@
 3. 在虚拟机实例中设置 X Window System 桌面环境。
 4. 在本地计算机上安装和配置 Chrome 远程桌面客户端。
 5. 从本地计算机连接到虚拟机实例上的桌面环境。
+
+## 问题
+1. 如果提示is it a member or group, 试试logout 再login
