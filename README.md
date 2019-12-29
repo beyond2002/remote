@@ -14,3 +14,6 @@
 
 ## 问题
 1. 如果提示is it a member or group, 试试logout 再login
+```
+ERROR:daemon_controller_delegate_linux.cc(101)] 2019-12-29 02:45:32,466:ERROR:Failed to access chrome-remote-desktop group. Is the user a member?
+```
