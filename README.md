@@ -17,7 +17,7 @@
 ```
 ERROR:daemon_controller_delegate_linux.cc(101)] 2019-12-29 02:45:32,466:ERROR:Failed to access chrome-remote-desktop group. Is the user a member?
 ```
-2. Teamviewer连不上，设置当前用户和root的密码，然后reboot虚拟机。
+2. Teamviewer连不上，设置当前用户和root的密码，然后reboot虚拟机。  
 设置当前用户密码：
 ```
 sudo passwd
