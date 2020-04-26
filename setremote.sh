@@ -11,7 +11,7 @@ wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 sudo dpkg --install google-chrome-stable_current_amd64.deb
 sudo apt install --assume-yes --fix-broken
 sudo apt install --assume-yes xubuntu-desktop
-wget https://download.teamviewer.com/download/linux/teamviewer_amd64.deb
-sudo dpkg --install teamviewer_amd64.deb
-sudo apt install --assume-yes --fix-broken
+#wget https://download.teamviewer.com/download/linux/teamviewer_amd64.deb
+#sudo dpkg --install teamviewer_amd64.deb
+#sudo apt install --assume-yes --fix-broken
 
