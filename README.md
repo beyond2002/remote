@@ -44,6 +44,19 @@
 sudo passwd
 ```
 
+## 提高桌面分辨率
+如果您使用的是超高分辨率监视器，您可能会发现 1600 x 1200 的默认最大远程桌面尺寸太小。如果是这样，您可以将其提高到您的显示器的分辨率大小。
+
+1. 使用 SSH 连接到实例。
+2. 将 CHROME_REMOTE_DESKTOP_DEFAULT_DESKTOP_SIZES 环境变量设置为包含您的显示器的分辨率大小：
+```
+echo "export CHROME_REMOTE_DESKTOP_DEFAULT_DESKTOP_SIZES=1600x1200,1920x1080,3840x2560" \
+    >> ~/.profile
+```
+3. 重启服务：
+```
+sudo systemctl restart chrome-remote-desktop
+```
 ## 问题
 1. 如果在上述的第6步骤之后，ssh终端上提示is it a member or group, 试试logout 再login
 ```
