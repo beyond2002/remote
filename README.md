@@ -88,13 +88,19 @@ Note: This will return the 9 digit code that you will use on your Anydesk client
 5. Reboot the system. sudo reboot
 6. Once it boots back up — connect via Anydesk to your desktop.
 ## 配置Google vm的https
-1. sudo apt install libnss3-tools
+1. install libnss3-tools
+```
+sudo apt install libnss3-tools
+```
 2. Install Homebrew
 ```
 sudo chown -R $USER ~/.cache
 /bin/bash -c "$(curl -sudo CAROOT=~/.sourcegraph/config mkcert -install https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 ```
-3. brew install mkcert
+3. install mkcert
+```
+brew install mkcert
+```
 4. Create the root CA by running:
 ```
 sudo CAROOT=~/.sourcegraph/config /home/linuxbrew/.linuxbrew/bin/mkcert -install
