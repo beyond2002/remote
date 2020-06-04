@@ -77,7 +77,7 @@ passwd
 Anydesk需要有虚拟显示器
 1. 运行insgnome.sh安装Ubuntu18.04的桌面环境和虚拟显示驱动。
 2. 设置当前和root用户的密码。
-3. 运行insany.sh安装Anydesk。
+3. 运行insanydesk.sh安装Anydesk。
 4. Run sudo su for the next command:
 ```
 echo welovelinuxandlongpasswords | anydesk --set-password 
