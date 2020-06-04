@@ -87,3 +87,68 @@ Note: This will return the 9 digit code that you will use on your Anydesk client
 ```
 5. Reboot the system. sudo reboot
 6. Once it boots back up — connect via Anydesk to your desktop.
+## 配置Google vm的https
+1. sudo apt install libnss3-tools
+2. Install Homebrew
+```
+sudo chown -R $USER ~/.cache
+/bin/bash -c "$(curl -sudo CAROOT=~/.sourcegraph/config mkcert -install https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+```
+3. brew install mkcert
+4. Create the root CA by running:
+```
+sudo CAROOT=~/.sourcegraph/config /home/linuxbrew/.linuxbrew/bin/mkcert -install
+```
+5. Creating the self-signed certificate
+```
+sudo CAROOT=~/.sourcegraph/config /home/linuxbrew/.linuxbrew/bin/mkcert \
+  -cert-file ~/.sourcegraph/config/sourcegraph.crt \
+  -key-file ~/.sourcegraph/config/sourcegraph.key \
+  beyond2002.hopto.org
+```
+6. Adding SSL support to NGINX
+Edit the default ~/.sourcegraph/config/nginx.conf, so that port 7080 redirects to 7443 and 7443 is served with SSL. It should look like this:
+```
+...
+http {
+    ...
+    server {
+        listen 7080;
+        return 301 https://$host:7433$request_uri;
+    }
+
+    server {
+        # Do not remove. The contents of sourcegraph_server.conf can change
+        # between versions and may include improvements to the configuration.
+        include nginx/sourcegraph_server.conf;
+
+        listen 7443 ssl;
+        server_name sourcegraph.example.com;  # change to your URL
+        ssl_certificate         sourcegraph.crt;
+        ssl_certificate_key     sourcegraph.key;
+
+        location / {
+            ...
+        }
+    }
+}
+```
+7. Changing the Sourcegraph container to listen on port 443
+NOTE: If the Sourcegraph container is still running, stop it before reading on.
+```
+docker stop $(docker ps | grep sourcegraph/server | awk '{ print $1 }')
+```
+Now that NGINX is listening on port 7443, we need to configure the Sourcegraph container to forward 443 to 7443 by adding --publish 443:7443 to the docker run command:
+```
+docker container run \
+  --rm  \
+  --publish 7080:7080 \
+  --publish 443:7443 \
+  \
+  --volume ~/.sourcegraph/config:/etc/sourcegraph  \
+  --volume ~/.sourcegraph/data:/var/opt/sourcegraph  \
+  sourcegraph/server:3.16.1
+```
+NOTE: We recommend removing --publish 7080:7080 as it’s not needed and traffic sent to that port is un-encrypted.
+Run the new Docker command, then validate by opening your browser at https://$HOSTNAME_OR_IP.
+If running Sourcegraph locally, the certificate will be valid because mkcert added the root CA to the list trusted by your OS.
