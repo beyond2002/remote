@@ -73,3 +73,17 @@ sudo -i
 sudo bash
 passwd
 ```
+## 安装Anydesk
+Anydesk需要有虚拟显示器
+1. 运行insgnome.sh安装Ubuntu18.04的桌面环境和虚拟显示驱动。
+2. 设置当前和root用户的密码。
+3. 运行insany.sh安装Anydesk。
+4. Run sudo su for the next command:
+```
+echo welovelinuxandlongpasswords | anydesk --set-password 
+Note: you can change the password to anything you wish.
+anydesk --get-id
+Note: This will return the 9 digit code that you will use on your Anydesk client to connect to the server. Save this code.
+```
+5. Reboot the system. sudo reboot
+6. Once it boots back up — connect via Anydesk to your desktop.
