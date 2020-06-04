@@ -87,7 +87,7 @@ Note: This will return the 9 digit code that you will use on your Anydesk client
 ```
 5. Reboot the system. sudo reboot
 6. Once it boots back up — connect via Anydesk to your desktop.
-## 配置Google vm的https
+## 配置Google vm的https for sourcegraph
 1. install libnss3-tools
 ```
 sudo apt install libnss3-tools
