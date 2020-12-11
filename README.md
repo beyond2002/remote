@@ -92,7 +92,7 @@ Note: This will return the 9 digit code that you will use on your Anydesk client
 ```
 sudo apt install libnss3-tools
 ```
-2. Install Homebrew
+2. Install Homebrew(and set brew to PATH as instructions on screen)
 ```
 sudo chown -R $USER ~/.cache
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
