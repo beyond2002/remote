@@ -95,7 +95,7 @@ sudo apt install libnss3-tools
 2. Install Homebrew
 ```
 sudo chown -R $USER ~/.cache
-/bin/bash -c "$(curl -sudo CAROOT=~/.sourcegraph/config mkcert -install https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
 3. install mkcert
 ```
